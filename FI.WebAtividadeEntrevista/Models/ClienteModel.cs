@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using WebAtividadeEntrevista.Models.Validations;
 
 namespace WebAtividadeEntrevista.Models
@@ -16,7 +18,7 @@ namespace WebAtividadeEntrevista.Models
         [Required]
         [StringLength(14,MinimumLength =14, ErrorMessage = "CPF deve conter 14 digitos")]
         [CPFCheckDigitValidator(ErrorMessage ="O CPF informado é inválido")]
-        [CPFCheckExistValidator(ErrorMessage ="O CPF informado já existe!")]
+        [CPFCheckExistClienteValidator(ErrorMessage ="O CPF informado já existe!")]
         public string CPF { get; set; }
 
         /// <summary>
@@ -72,6 +74,11 @@ namespace WebAtividadeEntrevista.Models
         /// Telefone
         /// </summary>
         public string Telefone { get; set; }
+
+        /// <summary>
+        /// Lista de beneficiarios
+        /// </summary>
+        public List<BeneficiarioModel> Beneficiarios { get; set; }
 
     }    
 }

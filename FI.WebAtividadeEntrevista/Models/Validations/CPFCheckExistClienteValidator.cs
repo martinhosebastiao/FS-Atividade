@@ -9,9 +9,9 @@ using System.Web.Mvc;
 
 namespace WebAtividadeEntrevista.Models.Validations
 {
-    public sealed class CPFCheckExistValidator : ValidationAttribute, IClientValidatable
+    public sealed class CPFCheckExistClienteValidator : ValidationAttribute, IClientValidatable
     {
-        public CPFCheckExistValidator() { }
+        public CPFCheckExistClienteValidator() { }
 
         public override bool IsValid(object value)
         {
@@ -28,7 +28,7 @@ namespace WebAtividadeEntrevista.Models.Validations
             yield return new ModelClientValidationRule
             {
                 ErrorMessage = this.FormatErrorMessage(null),
-                ValidationType = "CPFCheckExistValidator"
+                ValidationType = "CPFCheckExistClienteValidator"
             };
         }
 
