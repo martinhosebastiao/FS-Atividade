@@ -12,6 +12,8 @@ namespace WebAtividadeEntrevista.Models
     {
         public long Id { get; set; }
 
+        public long IdCliente { get; set; }
+
         /// <summary>
         /// Nome
         /// </summary>
@@ -24,8 +26,9 @@ namespace WebAtividadeEntrevista.Models
         [Required]
         [StringLength(14, MinimumLength = 14, ErrorMessage = "CPF deve conter 14 digitos")]
         [CPFCheckDigitValidator(ErrorMessage = "O CPF informado é inválido")]
-        [CPFCheckExistBeneficiarioValidator(ErrorMessage = "O CPF informado já existe!")]
         public string CPF { get; set; }
+
+
 
         public Beneficiario GetBeneficiario(long idCliente = 0)
         {

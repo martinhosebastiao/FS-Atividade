@@ -64,11 +64,12 @@ namespace FI.AtividadeEntrevista.DAL
             return ben;
         }
 
-        internal bool VerificarExistencia(string CPF)
+        internal bool VerificarExistencia(string CPF, long IdCliente = 0)
         {
             List<System.Data.SqlClient.SqlParameter> parametros = new List<System.Data.SqlClient.SqlParameter>();
 
             parametros.Add(new System.Data.SqlClient.SqlParameter("CPF", CPF));
+            parametros.Add(new System.Data.SqlClient.SqlParameter("IDCLIENTE", IdCliente));
 
             DataSet ds = base.Consultar("FI_SP_VerificaBeneficiario", parametros);
 
