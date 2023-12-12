@@ -59,7 +59,18 @@ namespace WebAtividadeEntrevista.Controllers
                     {
                         var _beneficiario = item.GetBeneficiario(model.Id);
 
-                        BoBeneficiario.Incluir(_beneficiario);
+                        //Analisar se o CPF já esta associado como beneficiario do cliente
+                        var isExist = BoBeneficiario.VerificarExistencia(_beneficiario.CPF, _beneficiario.IdCliente);
+
+                        if (isExist)
+                        {
+                            Response.StatusCode = 400;
+                            return Json(string.Join(Environment.NewLine, "O Beneficiario já esta associado ao cliente"));
+                        }
+                        else
+                        {
+                            BoBeneficiario.Incluir(_beneficiario);
+                        }
                     }
                 }
 

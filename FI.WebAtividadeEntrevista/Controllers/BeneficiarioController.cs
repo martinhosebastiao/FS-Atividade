@@ -12,6 +12,11 @@ namespace WebAtividadeEntrevista.Controllers
 {
     public class BeneficiarioController : Controller
     {
+        public ActionResult Incluir()
+        {
+            return View();
+        }
+
         // GET: Beneficiario/Edit/5
         [HttpGet]
         public ActionResult Alterar(long id)

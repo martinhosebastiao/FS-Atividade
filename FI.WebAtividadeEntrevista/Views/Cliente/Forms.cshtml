@@ -1,4 +1,4 @@
-﻿
+﻿@model  WebAtividadeEntrevista.Models.ClienteModel
 <form id="formCadastro" method="post">
     <div class="row">
         <div class="col-md-6">
@@ -18,7 +18,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label for="CPF">CPF:</label>
-                <input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Ex.: 010.011.111-00" maxlength="14"  pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" >
+                <input required="required" type="text" class="form-control" id="CPF" name="CPF" placeholder="Ex.: 010.011.111-00" maxlength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}">
             </div>
         </div>
         <div class="col-md-6">
@@ -77,7 +77,9 @@
             </div>
         </div>
     </div>
-
+    <p>
+        @Html.ActionLink("Beneficiario", "Incluir", "Beneficiario", new { }, new { @class = "btn btn-sm btn-default" })
+    </p>
     <div class="row">
         <div class="col-lg-12">
             <div class="pull-right">
@@ -86,11 +88,18 @@
             </div>
         </div>
     </div>
-    @section scripts{
-        <script type="text/javascript">
-            $(document).ready(function () {
-                $("#CPF").inputmask('999.999.999-99');
-            });
-        </script>
-    }
+
 </form>
+<div id="model" class="modal fade" role="dialog"/>
+
+@section scripts{
+    <script type="text/javascript">
+        $(".beneficiario").click(function () {
+            var model = $(this).attr("data-bind");
+            alert(model);
+            $("#modal").load("@Url.Action("Incluir","Beneficiario")", function () {
+                $("#modal").modal();
+            })
+        });
+    </script>
+}
